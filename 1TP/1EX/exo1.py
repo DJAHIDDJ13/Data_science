@@ -29,7 +29,7 @@ def get_test_averages(students):
 	return [sum([students[j][i] for j in range(len_students)])/len_students for i in range(len_marks)]
 
 def write_average_data(source_file, out_file):
-	f = open(filename, "w")
+	f = open(out_file, "w")
 
 	students = read_student_marks(source_file)
 	stud_num = len(students)
@@ -47,7 +47,8 @@ def write_average_data(source_file, out_file):
 	f.write(':'.join([str(round(test_averages[i], 2)) for i in range(len(test_averages))]) + ':'+str(round(sum(stud_averages)/len(stud_averages), 2))+'\r\n')
 	
 	f.close()
-student_number = 100000
+
+student_number = 1000
 marks_number = 5
 write_student_marks("note.csv", student_number, marks_number)
 write_average_data("note.csv", "average.csv")
