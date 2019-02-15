@@ -21,7 +21,7 @@ class Transition:
 
 class Markov_chain:
 	def __init__(self, states, start):
-		self.states = states+['.']
+		self.states = states
 		self.transitions = {state:Transition(state) for state in self.states}
 		self.current = start
 		
@@ -37,7 +37,7 @@ class Markov_chain:
 			f = open(filename, "r", errors='replace')
 			line = f.readline()
 			while line:
-				words += list(filter(lambda w: match(r'[a-z0-9\-\']+', w)!=None, [word.lower() for word in line.split()]))
+				words += list(filter(lambda w: match(r'[a-z0-9\-\']+', w), [word.lower() for word in line.split()]))
 				line = f.readline()
 			f.close()
 		except IOError:
