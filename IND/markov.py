@@ -51,7 +51,7 @@ class Markov_chain:
 		self.states += [words]
 		for i in range(len(words) - 1):
 			self.add_transition(words[i], words[i+1])
-	
+
 	def generate_text(self, length):
 		text = [self.current]
 		for i in range(length):
@@ -63,6 +63,6 @@ m = Markov_chain([], "the")
 dir_name = './exclastxt/'
 # ~ files = listdir(dir_name)
 # ~ for filename in files:
-m.train(dir_name+"/tr.txt")
+m.train("tr.txt")
 	# ~ print('Trained with:', filename)
 print(m.generate_text(40))
