@@ -59,10 +59,20 @@ class Markov_chain:
 			text.append(self.current)
 		return ' '.join(text)
 
-m = Markov_chain([], "the")
+start_word = "the"
+m = Markov_chain([], start_word)
+
 dir_name = './exclastxt/'
-# ~ files = listdir(dir_name)
-# ~ for filename in files:
-m.train("tr.txt")
-	# ~ print('Trained with:', filename)
-print(m.generate_text(40))
+files = []
+# uncomment the following line to use the "exclastxt" directory instead
+# files = listdir(dir_name)
+
+# comment the following line to exclude "tr.txt" file (containing donald trump tweets)
+files += ["tr.txt"]
+
+for filename in files:
+	m.train(filename)
+	print('Trained with:', filename)
+
+num_words = 40
+print(m.generate_text(num_words))
